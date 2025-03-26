@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title> </title>
+{% endblock %}
+
+{% block body %}
+<h2>Welcome, {{ current_user.get_name_from_email() }}!</h2>
+<form action="{{ url_for('logout') }}" method="POST" style="display: inline;">
+    <button type="submit">Logout</button>
+</form>
+{% endblock %}
+
