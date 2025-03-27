@@ -73,6 +73,9 @@ def ourforms():
 def results():
     return render_template('results.html')
 
+@app.route('/aboutme')
+def aboutme():
+    return render_template('aboutme.html')
 
 
 
@@ -85,7 +88,7 @@ def signin():
 
         if user and bcrypt.check_password_hash(user.password, password):
             login_user(user)
-            return redirect(url_for('home'))
+            return redirect(url_for('aboutme'))
         else:
             flash('Invalid email or password', 'danger')
 

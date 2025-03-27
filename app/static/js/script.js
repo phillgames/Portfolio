@@ -1,3 +1,7 @@
+function notreadyyet() {
+    alert("this is not ready yet!")
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     fetch('/api/form-data')
         .then(response => response.json())

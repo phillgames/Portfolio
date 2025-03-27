@@ -21,18 +21,19 @@
 
 <body>
     <div class="header">
-        <div class="backbutton">
+        <div class="backbutton" id="margin">
+            <button onclick="history.back()" type="submit">
+                <- back
+            </button>
+        </div>
+        <div class="backbutton" id="reverse_margin">
             <form action="{{ url_for('logout') }}" method="POST">
                 <button type="submit">
                     Logout
                 </button>
             </form>
         </div>
-        <a href="home">
-            <div class="logo">
-                <img class="img-size" src="{{url_for('static', filename='img/SSB_logo.png') }}" alt="logo">
-            </div>
-        </a>
+
     </div>
     <!-- the header with backbutton and logo -->
     {% block body %}{% endblock %}

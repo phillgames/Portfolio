@@ -29,16 +29,24 @@ body {
 /* header with backbutton and logo */
 
 .header button {
-    margin: 0.5%;
-    all: unset;
+    display: flex;
     width: 5vw;
     height: 5vh;
-    border-radius: 22.5px;
+    border-radius: 10px;
     color: #ECF0F1;
     background-color: #2C3E50;
     text-align: center;
     cursor: pointer;
-    border: 12.5px solid #ECF0F1;
+    justify-content: center;
+    align-items: center;
+}
+
+#margin {
+    margin-left: 1%;
+}
+
+#reverse_margin {
+    margin-right: 1%;
 }
 
 .email-text,
