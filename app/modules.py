@@ -1,16 +1,16 @@
 import sqlite3
 from flask_bcrypt import Bcrypt
 from flask_login import UserMixin
+from my_secret import SECRET_KEY
 
 bcrypt = Bcrypt()
 
-# Database connection function
+
 def get_db_connection():
-    conn = sqlite3.connect('db/portfolio.db')  # Adjust path if needed
-    conn.row_factory = sqlite3.Row  # Enables dictionary-style access
+    conn = sqlite3.connect('db/portfolio.db')
+    conn.row_factory = sqlite3.Row
     return conn
 
-# User model for Flask-Login
 class User(UserMixin):
     def __init__(self, id, email, password):
         self.id = id
@@ -18,16 +18,17 @@ class User(UserMixin):
         self.password = password
 
     def get_name_from_email(self):
-        # Split the email at the '@' symbol, then split the first part by '.'
-        name_part = self.email.split('@')[0]  # Get the part before '@'
-        name = name_part.replace('.', ' ').title()  # Replace dots with spaces and capitalize
+        name_part = self.email.split('@')[0]
+        name = name_part.replace('.','.').title()
         return name
 
     @staticmethod
     def get_user_by_email(email):
+        global global_email
+        global_email = email
         conn = get_db_connection()
         cur = conn.cursor()
-        cur.execute("SELECT * FROM users WHERE email = ?", (email,))
+        cur.execute("SELECT * FROM user WHERE email =?", (email,))
         user = cur.fetchone()
         conn.close()
         if user:
@@ -38,7 +39,7 @@ class User(UserMixin):
     def get_user_by_id(user_id):
         conn = get_db_connection()
         cur = conn.cursor()
-        cur.execute("SELECT * FROM users WHERE id = ?", (user_id,))
+        cur.execute("SELECT * FROM user WHERE id = ?", (user_id,))
         user = cur.fetchone()
         conn.close()
         if user:
@@ -50,7 +51,15 @@ class User(UserMixin):
         hashed_pw = bcrypt.generate_password_hash(password).decode('utf-8')
         conn = get_db_connection()
         cur = conn.cursor()
-        cur.execute("INSERT INTO users (email, password) VALUES (?, ?)", (email, hashed_pw))
+        cur.execute("INSERT INTO user (email, password) VALUES (?, ?)", (email, hashed_pw))
+        conn.commit()
+        conn.close()
+    
+    @staticmethod
+    def register_input_experience(experience, reuse, better):
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute("INSERT INTO formanswer (experience, reuse, better, user) VALUES (?, ?, ?, ?)", (experience, reuse, better, global_email))
         conn.commit()
         conn.close()
 
@@ -58,20 +67,25 @@ class User(UserMixin):
 DB_PATH = 'db/portfolio.db'
 
 def init_db():
-    """Creates the database and users table if they don't exist."""
     conn = sqlite3.connect(DB_PATH)
     cur = conn.cursor()
     cur.execute("""
-        CREATE TABLE IF NOT EXISTS users (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            email TEXT UNIQUE NOT NULL,
-            password TEXT NOT NULL
-        )
+        CREATE TABLE IF NOT EXISTS user (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        email TEXT NOT NULL,
+        password TEXT NOT NULL)
+    """)
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS formanswer (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        experience TEXT NOT NULL,
+        reuse TEXT NOT NULL,
+        better TEXT NOT NULL,
+        user TEXT NOT NULL)
     """)
     conn.commit()
     conn.close()
-    print("Database initialized successfully.")
-
+    print("Database initialized successfully")
 
 if __name__ == "__main__":
     init_db()

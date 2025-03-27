@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>HomePage</title>
+{% endblock %}
+
+{% block body %}
+<div class="setcenter">
+    <div class="welcome_name">
+        <h2>
+            Welcome, {{ current_user.get_name_from_email() }}!
+        </h2>
+    </div>
+    <div class="img-center">
+        <a href="{{ url_for('account') }}">
+            <img class="" src="{{url_for('static', filename='img/SSB_logo.png') }}" alt="logo">
+        </a>
+    </div>
+    <div class="formbuttonconfig">
+        <button onclick="notreadyyet()" class="formbutton">
+            <h1>
+                Make your own form
+            </h1>
+        </button>
+        <a href="results">
+            <button class="formbutton">
+                <h1>
+                    Form statistics
+                </h1>
+            </button>
+        </a>
+        <a href="ourforms">
+            <button class="formbutton">
+                <h1>
+                    Try our forms
+                </h1>
+            </button>
+        </a>
+    </div>
+</div>
+{% endblock %}

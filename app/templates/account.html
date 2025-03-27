@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Make an account</title>
+{% endblock %}
+
+{% block body %}
+<div class="setcenter">
+    <div class="img-center">
+        <img class="" src="{{url_for('static', filename='img/SSB_logo.png') }}" alt="logo">
+    </div>
+    <!-- configs the image logo to be in the center -->
+    <div class="buttonorganizer">
+        <a href="register">
+            <div class="Sign-up">
+                <h1>Register</h1>
+            </div>
+        </a>
+        <a href="login">
+            <div class="Sign-in">
+                <h1>Login</h1>
+            </div>
+        </a>
+    </div>
+    <!-- makes the buttons where they are -->
+</div>
+{% endblock %}

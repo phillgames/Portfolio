@@ -1,9 +1,49 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title> </title>
+<title>Login</title>
 {% endblock %}
 
 {% block body %}
+<div class="setcenter">
+    <div class="img-center">
+        <img class="" src="{{url_for('static', filename='img/SSB_logo.png') }}" alt="logo">
+    </div>
+    <div class="login">
+        <div class="inputfields">
+            <div class="mail" id="spacebetween">
+                <form action="/signin" method="POST"> <!--puts ur info into the database-->
+                    <div class="inputorganaizer">
+                        <label for="email">
+                            <h2>
+                                Email
+                            </h2>
+                        </label>
 
+                        <input class="email-text" type="email" id="email" name="email" required>
+                    </div>
+            </div>
+            <br>
+            <div class="pass" id="spacebetween">
+                <div class="inputorganaizer">
+                    <label for="password">
+                        <h2>
+                            Password
+                        </h2>
+                    </label>
+
+                    <input class="password-text" type="password" id="password" name="password" required>
+                </div>
+            </div>
+        </div>
+        <div class="buttonforsubmit">
+            <button class="loginbutton" id="buttonfatten" type="submit">
+                <h1>Login</h1>
+            </button>
+        </div>
+        </form>
+    </div>
+    <br>
+
+</div>
 {% endblock %}
