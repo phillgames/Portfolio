@@ -135,7 +135,7 @@ def form():
 
 @app.route('/api/form-data')
 def get_form_data():
-    conn = get_db_connection()
+    conn = get_connection()
     cur = conn.cursor()
     cur.execute("SELECT experience, reuse, better, COUNT(*) as count FROM formanswer GROUP BY experience, reuse, better")
     data = cur.fetchall()
