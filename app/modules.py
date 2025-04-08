@@ -46,7 +46,7 @@ class User(UserMixin):
         user = cur.fetchone()
         conn.close()
         if user:
-            return User(user['id'], user['email'], user['pass'])
+            return User(user[0], user[1], user[2])
         return None
 
     @staticmethod
