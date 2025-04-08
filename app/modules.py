@@ -32,10 +32,10 @@ class User(UserMixin):
         conn = get_connection()
         cur = conn.cursor(pymysql.cursors.DictCursor)
         cur.execute("SELECT * FROM users WHERE email = %s", (email,))
-        user = cur.fetchone()
+        users = cur.fetchone()
         conn.close()
-        if user:
-            return User(user[4], user[1], user[6])
+        if users:
+            return User(users[4], users[1], users[6])
         return None
 
     @staticmethod
@@ -43,10 +43,10 @@ class User(UserMixin):
         conn = get_connection()
         cur = conn.cursor() 
         cur.execute("SELECT * FROM users WHERE id = %s", (user_id,))
-        user = cur.fetchone()
+        users = cur.fetchone()
         conn.close()
-        if user:
-            return User(user[4], user[1], user[6])
+        if users:
+            return User(users[4], users[1], users[6])
         return None
 
     @staticmethod
