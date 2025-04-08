@@ -100,7 +100,7 @@ def signup():
         email = request.form.get('email')  # Changed to 'email'
         password = request.form.get('password')
         if User.get_user_by_email(email):  # Changed to 'get_user_by_email'
-            flash('Email already taken', 'warning')
+            return render_template(url_for('login'))
         else:
             User.register_user(email, password)  # Changed to 'register_user' with email
             flash('Registration successful! Please log in.', 'success')
