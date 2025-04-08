@@ -31,7 +31,7 @@ class User(UserMixin):
         global_email = email
         conn = get_connection()
         cur = conn.cursor()
-        cur.execute("SELECT * FROM users WHERE email =?", (email,))
+        cur.execute("SELECT * FROM users WHERE email %s", (email,))
         user = cur.fetchone()
         conn.close()
         if user:
@@ -42,7 +42,7 @@ class User(UserMixin):
     def get_user_by_id(user_id):
         conn = get_connection()
         cur = conn.cursor() 
-        cur.execute("SELECT * FROM users WHERE id = ?", (user_id,))
+        cur.execute("SELECT * FROM users WHERE id %s", (user_id,))
         user = cur.fetchone()
         conn.close()
         if user:
@@ -54,7 +54,7 @@ class User(UserMixin):
         hashed_pw = bcrypt.generate_password_hash(password).decode('utf-8')
         conn = get_connection()
         cur = conn.cursor()
-        cur.execute("INSERT INTO users (email, password) VALUES (?, ?)", (email, hashed_pw))
+        cur.execute("INSERT INTO users (email, password) VALUES (%s, %s)", (email, hashed_pw))
         conn.commit()
         conn.close()
     
@@ -62,7 +62,7 @@ class User(UserMixin):
     def register_input_experience(experience, reuse, better):
         conn = get_connection()
         cur = conn.cursor()
-        cur.execute("INSERT INTO formanswer (experience, reuse, better, user) VALUES (?, ?, ?, ?)", (experience, reuse, better, global_email))
+        cur.execute("INSERT INTO formanswer (experience, reuse, better, user) VALUES (%s, %s, %s, %s)", (experience, reuse, better, global_email))
         conn.commit()
         conn.close()
 
