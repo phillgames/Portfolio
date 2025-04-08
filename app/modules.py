@@ -35,7 +35,7 @@ class User(UserMixin):
         user = cur.fetchone()
         conn.close()
         if user:
-            return User(user[0], user[1], user[2])
+            return User(user[4], user[1], user[6])
         return None
 
     @staticmethod
@@ -46,7 +46,7 @@ class User(UserMixin):
         user = cur.fetchone()
         conn.close()
         if user:
-            return User(user[0], user[1], user[2])
+            return User(user[4], user[1], user[6])
         return None
 
     @staticmethod
