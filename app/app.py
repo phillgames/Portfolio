@@ -2,7 +2,7 @@
 from flask import Flask, request, render_template, redirect, url_for, flash, jsonify, session #type: ignore
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user #type: ignore
 from flask_mail import Mail, Message #type: ignore
-from modules import User, get_db_connection, bcrypt
+from modules import User, get_connection, bcrypt
 from my_secret import SECRET_KEY
 import uuid
 import socket
