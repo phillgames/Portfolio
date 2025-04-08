@@ -6,5 +6,8 @@ CREATE TABLE users(
     verified BOOLEAN
 );
 
+
+ALTER TABLE users ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY;
+
 insert into users (user, email, pass, verify)
 values ('phill', 'phill@balls.com', 'uxcthis', '20d41098-19bf-450b-8e11-cf1260eaa335');
