@@ -31,7 +31,7 @@ class User(UserMixin):
         global_email = email
         conn = get_connection()
         cur = conn.cursor()
-        cur.execute("SELECT * FROM users WHERE email %s", (email,))
+        cur.execute("SELECT * FROM users WHERE email (%s)", (email,))
         user = cur.fetchone()
         conn.close()
         if user:
@@ -42,7 +42,7 @@ class User(UserMixin):
     def get_user_by_id(user_id):
         conn = get_connection()
         cur = conn.cursor() 
-        cur.execute("SELECT * FROM users WHERE id %s", (user_id,))
+        cur.execute("SELECT * FROM users WHERE id (%s)", (user_id,))
         user = cur.fetchone()
         conn.close()
         if user:
