@@ -30,7 +30,7 @@ class User(UserMixin):
         global global_email
         global_email = email
         conn = get_connection()
-        cur = conn.cursor()
+        cur = conn.cursor(pymysql.cursors.DictCursor)
         cur.execute("SELECT * FROM users WHERE email = %s", (email,))
         user = cur.fetchone()
         conn.close()
