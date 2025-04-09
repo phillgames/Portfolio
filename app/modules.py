@@ -58,13 +58,13 @@ class User(UserMixin):
         conn.commit()
         conn.close()
     
-    @staticmethod
-    def register_input_experience(experience, reuse, better):
-        conn = get_connection()
-        cur = conn.cursor()
-        cur.execute("INSERT INTO formanswer (experience, reuse, better, user) VALUES (%s, %s, %s, %s)", (experience, reuse, better, global_email))
-        conn.commit()
-        conn.close()
+    # @staticmethod
+    # def register_input_experience(experience, reuse, better):
+    #     conn = get_connection()
+    #     cur = conn.cursor()
+    #     cur.execute("INSERT INTO formanswer (experience, reuse, better, user) VALUES (%s, %s, %s, %s)", (experience, reuse, better, global_email))
+    #     conn.commit()
+    #     conn.close()
 
 
 # DB_PATH = 'db/portfolio.db'
