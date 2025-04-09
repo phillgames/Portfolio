@@ -35,7 +35,7 @@ class User(UserMixin):
         users = cur.fetchone()
         conn.close()
         if users:
-            return User(users['email'], users['pass'], users['id'])
+            return User(users['email'], users['password'], users['id'])
         return None
 
     @staticmethod
@@ -46,7 +46,7 @@ class User(UserMixin):
         users = cur.fetchone()
         conn.close()
         if users:
-            return User(users['email'], users['pass'], users['id'])
+            return User(users['email'], users['password'], users['id'])
         return None
 
     @staticmethod
@@ -54,7 +54,7 @@ class User(UserMixin):
         hashed_pw = bcrypt.generate_password_hash(password).decode('utf-8')
         conn = get_connection()
         cur = conn.cursor()
-        cur.execute("INSERT INTO users (email, pass) VALUES (%s, %s)", (email, hashed_pw))
+        cur.execute("INSERT INTO users (email, password) VALUES (%s, %s)", (email, hashed_pw))
         conn.commit()
         conn.close()
     
