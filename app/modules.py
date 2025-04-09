@@ -51,10 +51,10 @@ class User(UserMixin):
 
     @staticmethod
     def register_user(email, password):
-        hashed_pw = bcrypt.generate_password_hash(password).decode('utf-8')
+        hashed = bcrypt.generate_password_hash(password).decode('utf-8')
         conn = get_connection()
         cur = conn.cursor()
-        cur.execute("INSERT INTO users (email, password) VALUES (%s, %s)", (email, hashed_pw))
+        cur.execute("INSERT INTO users (email, password) VALUES (%s, %s)", (email, hashed))
         conn.commit()
         conn.close()
     

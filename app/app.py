@@ -85,6 +85,7 @@ def signin():
         email = request.form['email']  
         password = request.form['password']
         user = User.get_user_by_email(email)  
+        print(user.password, password)
 
         if user and bcrypt.check_password_hash(user.password, password):
             login_user(user)
