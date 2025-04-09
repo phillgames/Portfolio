@@ -1,3 +1,5 @@
+DROP DATABASE portfolio;
+
 DROP TABLE users;
 
 TRUNCATE TABLE users;
