@@ -23,7 +23,7 @@ login_manager.login_view = 'login'
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'phills-portfolio'
+app.config['MAIL_USERNAME'] = 'geir.translator.services@gmail.com'
 app.config['MAIL_PASSWORD'] = 'hbwj lnbx yeqh rife'
 
 mail = Mail(app)
