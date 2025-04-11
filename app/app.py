@@ -134,17 +134,17 @@ def form():
     
     return render_template('ourform.html')
 
-@app.route('/api/form-data')
-def get_form_data():
-    conn = get_connection()
-    cur = conn.cursor()
-    cur.execute("SELECT experience, reuse, better, COUNT(*) as count FROM formanswer GROUP BY experience, reuse, better")
-    data = cur.fetchall()
-    conn.close()
+# @app.route('/api/form-data')
+# def get_form_data():
+#     conn = get_connection()
+#     cur = conn.cursor()
+#     cur.execute("SELECT experience, reuse, better, COUNT(*) as count FROM formanswer GROUP BY experience, reuse, better")
+#     data = cur.fetchall()
+#     conn.close()
 
-    form_data = [{'experience': row['experience'], 'reuse': row['reuse'], 'better': row['better'], 'count': row['count']} for row in data]
+#     form_data = [{'experience': row['experience'], 'reuse': row['reuse'], 'better': row['better'], 'count': row['count']} for row in data]
 
-    return jsonify(form_data)
+#     return jsonify(form_data)
 
 
 
