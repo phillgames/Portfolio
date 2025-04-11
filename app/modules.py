@@ -8,7 +8,7 @@ bcrypt = Bcrypt()
 
 def get_connection():
     return pymysql.connect(
-        host='localhost',
+        host='10.2.3.158',
         user='portusr',
         password='portpass',
         db='portfoliousr'
