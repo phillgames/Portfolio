@@ -87,13 +87,31 @@ def signin():
         user = User.get_user_by_email(email)  
         print(user.password, password)
 
-        if user and bcrypt.check_password_hash(user.password, password):
-            login_user(user)
+        def attempt_login(user, password):
+            if user:
+                # Convert the salt to bytes if it is an integer
+                if isinstance(user.salt, int):
+                    user.salt = user.salt.to_bytes((user.salt.bit_length() + 7) // 8, byteorder='big')
+
+            # Check the password
+                if bcrypt.checkpw(password.encode('utf-8'), user.hashed_password):
+                    login_user(user)
+                    return True
+            return False
+
+# Your existing code
+        if attempt_login(user, password):
             return redirect(url_for('aboutme'))
         else:
             flash('Invalid email or password', 'danger')
 
-    return render_template('login.html')
+            # if user and bcrypt.check_password_hash(user.password, password):
+            #     login_user(user)
+            #     return redirect(url_for('aboutme'))
+            # else:
+            #     flash('Invalid email or password', 'danger')
+
+        return render_template('login.html')
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
