@@ -111,6 +111,7 @@ button {
 
 #startlowered {
     margin-top: 30vh;
+
 }
 
 /* makes the greeting button lower down */
@@ -139,7 +140,7 @@ button {
     font-family: merriweather, serif;
     box-shadow: 0 6px 30px -10px #ECF0F1;
     cursor: pointer;
-    font-size: clamp(0.5rem, 1vw, 1rem);
+    font-size: clamp(0.4rem, 0.9vw, 0.9rem);
 }
 
 /* button config so all buttons look the same */
