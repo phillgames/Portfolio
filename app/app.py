@@ -6,8 +6,10 @@ from modules import User, get_connection, bcrypt
 from my_secret import SECRET_KEY
 import uuid
 import socket
+import bcrypt #type: ignore
 
 from flask import Flask, request, jsonify, render_template, redirect, url_for, flash, session # type: ignore
+
 
 
 app = Flask(__name__)
