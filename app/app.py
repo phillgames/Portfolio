@@ -108,6 +108,8 @@ def signin():
         password = request.form['password']
         user = User.get_user_by_email(email)  
 
+        print(user)
+
         if user and bcrypt.check_password_hash(user.password, password):
             login_user(user)
             return redirect(url_for('home'))
