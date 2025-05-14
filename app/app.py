@@ -92,13 +92,13 @@ def aboutme():
 
 
 
-@app.route('/signin', methods=['GET', 'POST'])
-def signin():
-    if request.method == 'POST':
-        email = request.form['email']  
-        password = request.form['password']
-        user = User.get_user_by_email(email)  
-        print(user.password, password)
+# @app.route('/signin', methods=['GET', 'POST'])
+# def signin():
+#     if request.method == 'POST':
+#         email = request.form['email']  
+#         password = request.form['password']
+#         user = User.get_user_by_email(email)  
+#         print(user.password, password)
 
 
 @app.route('/signin', methods=['GET', 'POST'])
