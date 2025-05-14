@@ -35,7 +35,7 @@ class User(UserMixin):
         users = cur.fetchone()
         conn.close()
         if users:
-            return User(users['email'], users['password'])
+            return User(users['email'], users['id'], users['password'])
         #, users['id']#
         return None
 
