@@ -1,11 +1,8 @@
 CREATE DATABASE portfoliousr;
 
 CREATE TABLE users(
-    user VARCHAR(50),
-    password VARCHAR(256),
-    verify VARCHAR(40),
     email VARCHAR(50),
-    verified BOOLEAN
+    password VARCHAR(256)
 );
 
 
