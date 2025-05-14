@@ -113,7 +113,7 @@ def signin():
         if user and bcrypt.check_password_hash(user.password, password):
             print("u did it :)")
             session["logged_in"] = True
-            session["current_user"] = user
+            session["current_user"] = email
             login_user(user)
             return redirect(url_for('home'))
         else:
