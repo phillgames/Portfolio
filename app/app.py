@@ -109,10 +109,12 @@ def signin():
         user = User.get_user_by_email(email)  
 
         if user and bcrypt.check_password_hash(user.password, password):
+            print("u did it :)")
             login_user(user)
             return redirect(url_for('home'))
         else:
             flash('Invalid email or password', 'danger')
+            print("u didn't it :)")
 
     return render_template('login.html')
 
