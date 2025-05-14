@@ -2,7 +2,7 @@ import pymysql #type: ignore
 from flask_bcrypt import Bcrypt
 from flask_login import UserMixin
 from my_secret import SECRET_KEY
-
+    
 bcrypt = Bcrypt()
 
 

@@ -10,6 +10,17 @@ import bcrypt #type: ignore
 
 from flask import Flask, request, jsonify, render_template, redirect, url_for, flash, session # type: ignore
 
+# def attempt_login(user.password, password):
+#     if user:
+#         # Convert the salt to bytes if it is an integer
+#         if isinstance(user.salt, int):
+#             user.salt = user.salt.to_bytes((user.salt.bit_length() + 7) // 8, byteorder='big')
+
+#     # Check the password
+#         if bcrypt.checkpw(password.encode('utf-8'), user.hashed_password):
+#             login_user(user)
+#             return True
+#     return False
 
 
 app = Flask(__name__)
@@ -89,31 +100,21 @@ def signin():
         user = User.get_user_by_email(email)  
         print(user.password, password)
 
-        def attempt_login(user, password):
-            if user:
-                # Convert the salt to bytes if it is an integer
-                if isinstance(user.salt, int):
-                    user.salt = user.salt.to_bytes((user.salt.bit_length() + 7) // 8, byteorder='big')
 
-            # Check the password
-                if bcrypt.checkpw(password.encode('utf-8'), user.hashed_password):
-                    login_user(user)
-                    return True
-            return False
+@app.route('/signin', methods=['GET', 'POST'])
+def signin():
+    if request.method == 'POST':
+        email = request.form['email']  
+        password = request.form['password']
+        user = User.get_user_by_email(email)  
 
-# Your existing code
-        if attempt_login(user, password):
-            return redirect(url_for('aboutme'))
+        if user and bcrypt.check_password_hash(user.password, password):
+            login_user(user)
+            return redirect(url_for('home'))
         else:
             flash('Invalid email or password', 'danger')
 
-            # if user and bcrypt.check_password_hash(user.password, password):
-            #     login_user(user)
-            #     return redirect(url_for('aboutme'))
-            # else:
-            #     flash('Invalid email or password', 'danger')
-
-        return render_template('login.html')
+    return render_template('login.html')
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
