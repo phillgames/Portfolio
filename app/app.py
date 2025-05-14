@@ -78,16 +78,6 @@ def submit():
 def account():
     return render_template('account.html')
 
-@app.route('/ourforms')
-@login_required
-def ourforms():
-    return render_template('ourform.html')
-
-@app.route('/results')
-@login_required
-def results():
-    return render_template('results.html')
-
 @app.route('/aboutme')
 def aboutme():
     return render_template('aboutme.html')
@@ -145,21 +135,8 @@ def signup():
     return render_template('register.html')
 
 @app.route('/form', methods=['GET', 'POST'])
-@login_required
-def form():
-    if request.method == 'POST':
-        experience = request.form.get('experience')
-        reuse = request.form.get('reuse')
-        better = request.form.get('better')
-        print(experience, reuse, better)
-        if not experience and not reuse and not better:  # Check if all inputs are empty
-            flash('You need an input to submit')
-            return redirect(url_for('form'))
-        else:
-            User.register_input_experience(experience, reuse, better)
-            return redirect(url_for('results'))  # Redirect to home after submission
-    
-    return render_template('ourform.html')
+
+
 
 # @app.route('/api/form-data')
 # def get_form_data():
@@ -176,11 +153,14 @@ def form():
 
 
 @app.route('/logout', methods=['POST'])
-@login_required
+
 def logout():
-    logout_user()
-    flash("You have been logged out.", "success")
-    return redirect(url_for('account'))
+    if session["logged_in"]:
+        redirect(url_for('account'))
+    else:
+        redirect("/login")
+        flash("You have been logged out.", "success")
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
