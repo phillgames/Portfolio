@@ -64,9 +64,11 @@ def login():
     return render_template('login.html')
 
 @app.route('/home')
-@login_required
 def home():
-    return render_template('home.html')
+    if session["logged_in"]:
+        return render_template('home.html')
+    else:
+        redirect("/login")
 
 @app.route('/submit')
 def submit():
@@ -110,6 +112,8 @@ def signin():
 
         if user and bcrypt.check_password_hash(user.password, password):
             print("u did it :)")
+            session["logged_in"] = True
+            session["current_user"] = user
             login_user(user)
             return redirect(url_for('home'))
         else:
