@@ -160,6 +160,7 @@ def logout():
     else:
         redirect("/login")
         flash("You have been logged out.", "success")
+    return redirect(url_for('account'))
 
 
 if __name__ == '__main__':
