@@ -106,7 +106,7 @@ def signin():
     if request.method == 'POST':
         email = request.form['email']  
         password = request.form['password']
-        user = User.get_user_by_email(password)  
+        user = User.get_user_by_email(email)  
 
         print(user, user.password)
 
