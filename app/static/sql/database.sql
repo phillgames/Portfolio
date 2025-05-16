@@ -2,11 +2,13 @@ CREATE DATABASE portfoliousr;
 
 CREATE TABLE users(
     email VARCHAR(50),
-    password VARCHAR(256)
+    password VARCHAR(256),
+    id INT AUTO_INCREMENT PRIMARY KEY
 );
 
 
-ALTER TABLE users ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY;
 
-insert into users (user, email, password, verify)
-values ('phill', 'phill@balls.com', 'uxcthis', '20d41098-19bf-450b-8e11-cf1260eaa335');
+ALTER TABLE users DROP COLUMN whatever;
+
+insert into users (email, password)
+values ('test@email.com', 'youshouldnotseethis');

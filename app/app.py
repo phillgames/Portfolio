@@ -157,6 +157,7 @@ def signup():
 def logout():
     if session["logged_in"]:
         redirect(url_for('account'))
+        session["logged_in"] = False
     else:
         redirect("/login")
         flash("You have been logged out.", "success")
