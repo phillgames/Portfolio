@@ -102,7 +102,7 @@ button {
     width: 100vw;
     height: 60vh;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
 }
