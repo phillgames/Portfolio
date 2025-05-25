@@ -23,9 +23,16 @@
     <div class="header">
         <div class="backbutton" id="margin">
             <button onclick="history.back()" type="submit">
-                <- back
-            </button>
+                <- back </button>
         </div>
+        <div class="homebutton" id="">
+            <form action="{{ url_for('home') }}" method="POST">
+                <button type="submit">
+                    Home
+                </button>
+            </form>
+        </div>
+
         <div class="backbutton" id="reverse_margin">
             <form action="{{ url_for('logout') }}" method="POST">
                 <button type="submit">
