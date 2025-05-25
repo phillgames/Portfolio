@@ -74,6 +74,10 @@ def home():
 def submit():
     return render_template('home.html')
 
+@app.route('/home')
+def home():
+    return render_template('home.html')
+
 @app.route('/account')
 def account():
     return render_template('account.html')
