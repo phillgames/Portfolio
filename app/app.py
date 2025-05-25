@@ -82,6 +82,9 @@ def account():
 def aboutme():
     return render_template('aboutme.html')
 
+@app.route('/projects')
+def projects():
+    return render_template('projects.html')
 
 
 # @app.route('/signin', methods=['GET', 'POST'])
