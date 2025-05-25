@@ -65,10 +65,14 @@ def login():
 
 @app.route('/home')
 def home():
-    if session["logged_in"]:
-        return render_template('home.html')
-    else:
-        redirect("/login")
+    return render_template('home.html')
+
+# @app.route('/home')
+# def home():
+#     if session["logged_in"]:
+#         return render_template('home.html')
+#     else:
+#         redirect("/login")
 
 @app.route('/submit')
 def submit():
