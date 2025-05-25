@@ -78,9 +78,9 @@ def submit():
 def account():
     return render_template('account.html')
 
-@app.route('/aboutme')
-def aboutme():
-    return render_template('aboutme.html')
+@app.route('/preview')
+def preview():
+    return render_template('preview.html')
 
 @app.route('/projects')
 def projects():
