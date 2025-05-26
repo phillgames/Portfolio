@@ -16,6 +16,7 @@
         href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap"
         rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- script link, css link, and fonts -->
     {% block head %}{% endblock %}
 </head>
 
@@ -25,6 +26,7 @@
             <button onclick="history.back()" type="submit">
                 <- back </button>
         </div>
+        <!-- button that takes you back to the last page -->
         <a href="home">
             <div class="homebutton" id="">
                 <button type="submit">
@@ -32,7 +34,7 @@
                 </button>
             </div>
         </a>
-
+        <!-- button that takes you to the home page -->
         <div class="backbutton" id="reverse_margin">
             <form action="{{ url_for('logout') }}" method="POST">
                 <button type="submit">
@@ -40,7 +42,7 @@
                 </button>
             </form>
         </div>
-
+        <!-- button that logs you out -->
     </div>
     <!-- the header with backbutton and logo -->
     {% block body %}{% endblock %}
