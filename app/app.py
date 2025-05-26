@@ -100,6 +100,7 @@ def projects():
 
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
+    pass_alert = True
     if request.method == 'POST':
         email = request.form['email']  
         password = request.form['password']
@@ -112,10 +113,10 @@ def signin():
             login_user(user)
             return redirect(url_for('home'))
         else:
-            flash('Invalid email or password', 'danger')
+            
             print("u didn't it :)")
 
-    return render_template('login.html')
+    return render_template('login.html', pass_alert=pass_alert)
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():

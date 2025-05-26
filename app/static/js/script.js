@@ -2,6 +2,17 @@ function notreadyyet() {
     alert("this is not ready yet!")
 }
 
+function wrongpass() {
+    alert("you've entered the wrong email or password!")
+}
+
+// document.addEventListener("DOMContentLoaded", function() {
+//     var passAlert = {{ pass_alert | tojson }};
+//     if (passAlert) {
+//         wrongpass();
+//     }
+// });
+
 document.addEventListener("DOMContentLoaded", function () {
     fetch('/api/form-data')
         .then(response => response.json())
