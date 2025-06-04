@@ -1,6 +1,6 @@
 import pymysql #type: ignore
-from flask_bcrypt import Bcrypt
-from flask_login import UserMixin
+from flask_bcrypt import Bcrypt #type: ignore
+from flask_login import UserMixin #type: ignore
 from my_secret import SECRET_KEY
     
 bcrypt = Bcrypt()

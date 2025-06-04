@@ -2,6 +2,8 @@ DROP DATABASE portfolio;
 
 DROP TABLE users;
 
+ALTER TABLE users DROP COLUMN whatever;
+
 TRUNCATE TABLE users;
 
 DELETE FROM users WHERE id=2;
