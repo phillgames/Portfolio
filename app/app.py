@@ -86,7 +86,10 @@ def preview():
 
 @app.route('/projects')
 def projects():
-    return render_template('projects.html')
+    if session["logged_in"]:
+        return render_template('projects.html')
+    else:
+        redirect("/login")
 
 
 # @app.route('/signin', methods=['GET', 'POST'])
