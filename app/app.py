@@ -23,6 +23,8 @@ from flask import Flask, request, jsonify, render_template, redirect, url_for, f
 #     return False
 
 
+session["logged_in"] = False
+
 app = Flask(__name__)
 app.secret_key = SECRET_KEY  
 
