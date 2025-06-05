@@ -60,12 +60,12 @@ class User(UserMixin):
         conn.close()
 
     @staticmethod
-    def comment_with_id(user_id):
+    def comment_with_email(email):
         conn = get_connection()
         cur = conn.cursor() 
-        cur.execute("SELECT * FROM users WHERE id = %s", (user_id))
+        cur.execute("SELECT * FROM users WHERE id = %s", (email))
         users = cur.fetchone()
-        cur.execute("INSERT INTO coms (userid) VALUES (%s)", (user_id))
+        cur.execute("INSERT INTO coms (userid) VALUES (%s)", (email))
         conn.close()
         if users:
             return User(users['email'], users['password'], users['id'])
