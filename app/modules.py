@@ -65,7 +65,7 @@ class User(UserMixin):
         cur = conn.cursor() 
         cur.execute("SELECT * FROM users WHERE id = %s", (user_id,))
         users = cur.fetchone()
-        cur.execute("INSERT INTO coms (userid) (%s)", (user_id,))
+        cur.execute("INSERT INTO coms (userid) VALUES (%s)", (user_id,))
         conn.close()
         if users:
             return User(users['email'], users['password'], users['id'])
