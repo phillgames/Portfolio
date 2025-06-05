@@ -90,8 +90,7 @@ def projects():
     if session["logged_in"]:
         return render_template('projects.html')
     else:
-        print("failed")
-        return render_template('login.html')
+        return render_template('register.html')
 
 
 # @app.route('/signin', methods=['GET', 'POST'])
