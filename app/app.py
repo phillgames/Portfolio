@@ -26,8 +26,10 @@ from passlib.context import CryptContext #type: ignore
 app = Flask(__name__)
 app.secret_key = SECRET_KEY  
 
-def runonstart(email):
-    User.get_user_by_email(email) 
+def runonstart(email, user_id):
+    User.get_user_by_email(email)
+    User.get_user_by_id(user_id)
+ 
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -146,7 +148,6 @@ def signup():
 
 @app.route('/comment', methods=['GET', 'POST'])
 def comment(user_id):
-    print(user_id)
     return User.comment_with_id(user_id)
 
 @app.route('/form', methods=['GET', 'POST'])
