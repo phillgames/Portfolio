@@ -54,7 +54,6 @@ def load_user(user_id):
 
 @app.route('/') 
 def index():
-    session["logged_in"] = False
     print(session)
     return render_template('start.html')
 
