@@ -8,7 +8,6 @@ import uuid
 import socket
 from passlib.context import CryptContext #type: ignore
 
-from flask import Flask, request, jsonify, render_template, redirect, url_for, flash, session # type: ignore
 
 # def attempt_login(user.password, password):
 #     if user:
@@ -46,7 +45,7 @@ s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(('8.8.8.8', 80))
 IPAddr = s.getsockname()[0]
 s.close()
-print(IPAddr)
+# print(IPAddr)
 
 @login_manager.user_loader
 def load_user(user_id):
