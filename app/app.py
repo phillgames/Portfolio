@@ -91,6 +91,7 @@ def projects():
         return render_template('projects.html')
     else:
         print("failed")
+        return render_template('login.html')
 
 
 # @app.route('/signin', methods=['GET', 'POST'])
