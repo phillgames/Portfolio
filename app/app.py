@@ -146,6 +146,7 @@ def signup():
 
 @app.route('/comment', methods=['GET', 'POST'])
 def comment(user_id):
+    print(user_id)
     return User.comment_with_id(user_id)
 
 @app.route('/form', methods=['GET', 'POST'])
