@@ -16,3 +16,6 @@ CREATE TABLE coms(
 
 insert into users (email, password)
 values ('test@email.com', 'youshouldnotseethis');
+
+insert into coms (userid, Comments)
+values (1, 'bla bla bla');
