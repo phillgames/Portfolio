@@ -43,7 +43,7 @@ class User(UserMixin):
     def get_user_by_id(user_id):
         conn = get_connection()
         cur = conn.cursor() 
-        cur.execute("SELECT * FROM users WHERE id = %s", (user_id,))
+        cur.execute("SELECT * FROM users WHERE id = %s", (user_id))
         users = cur.fetchone()
         conn.close()
         if users:
@@ -63,9 +63,9 @@ class User(UserMixin):
     def comment_with_id(user_id):
         conn = get_connection()
         cur = conn.cursor() 
-        cur.execute("SELECT * FROM users WHERE id = %s", (user_id,))
+        cur.execute("SELECT * FROM users WHERE id = %s", (user_id))
         users = cur.fetchone()
-        cur.execute("INSERT INTO coms (userid) VALUES (%s)", (user_id,))
+        cur.execute("INSERT INTO coms (userid) VALUES (%s)", (user_id))
         conn.close()
         if users:
             return User(users['email'], users['password'], users['id'])
