@@ -144,7 +144,7 @@ def signup():
 
     return render_template('register.html')
 
-@app.route('/comment/<int:user_id>', methods=['GET', 'POST'])
+@app.route('/comment', methods=['GET', 'POST'])
 def comment(user_id):
     return User.comment_with_id(user_id)
 
