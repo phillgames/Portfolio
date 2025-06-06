@@ -149,8 +149,8 @@ def signup():
 def comment():
     if session.get("logged_in"):
         # Get the current user's email from the session
-        email = session.get("current_user")
-        user = User.get_user_by_email(email)
+        comm_id = session.get("current_user")
+        user = User.get_user_by_id(comm_id)
         if user:
             User.comment_with_id(user.id)
         return render_template('projects.html')
