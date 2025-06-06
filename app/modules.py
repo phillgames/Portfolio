@@ -42,12 +42,12 @@ class User(UserMixin):
     @staticmethod
     def get_user_by_id(user_id):
         conn = get_connection()
-        cur = conn.cursor() 
-        cur.execute("SELECT * FROM users WHERE id = %s", (user_id))
-        users = cur.fetchone()
+        cur = conn.cursor(pymysql.cursors.DictCursor)
+        cur.execute("SELECT * FROM users WHERE id = %s", (user_id,))
+        user = cur.fetchone()
         conn.close()
-        if users:
-            return User(users['email'], users['password'], users['id'])
+        if user:
+            return User(user['id'], user['email'], user['password'])
         return None
 
     @staticmethod
