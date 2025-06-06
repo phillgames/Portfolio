@@ -1,5 +1,6 @@
 __pycache__/
-# app/my_secret.py
+app/my_secret.py
+app/hiddenpass.py
 venv/
 /docs/ThingsToRemember.md
 

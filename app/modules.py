@@ -2,6 +2,7 @@ import pymysql #type: ignore
 from flask_bcrypt import Bcrypt #type: ignore
 from flask_login import UserMixin #type: ignore
 from my_secret import SECRET_KEY
+from hiddenpass import HIDEPASS
     
 bcrypt = Bcrypt()
 
@@ -10,7 +11,7 @@ def get_connection():
     return pymysql.connect(
         host='localhost',
         user='portusr',
-        password='portpass',
+        password=HIDEPASS,
         db='portfoliousr'
     )
 
