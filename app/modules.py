@@ -65,11 +65,10 @@ class User(UserMixin):
         cur = conn.cursor() 
         cur.execute("SELECT * FROM users WHERE id = %s", (com_id))
         users = cur.fetchone()
+        cur.execute("INSERT INTO coms (userid) VALUES (%s)", (com_id))
+        conn.commit()
         conn.close()
-        if users:
-            print(users)
-            # return User(users['email'], users['password'], users['id'])
-        return None
+
     
     # @staticmethod
     # def register_input_experience(experience, reuse, better):
