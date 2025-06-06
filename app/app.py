@@ -147,10 +147,9 @@ def signup():
 
 @app.route('/comment/<com_id>')
 def comment(com_id):
-    if 10 > 5:
-        User.comment_with_id(com_id)
-    else:
-        return render_template('projects.html')
+    User.comment_with_id(com_id)
+    return render_template('projects.html')
+
 
 @app.route('/form', methods=['GET', 'POST'])
 
