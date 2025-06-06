@@ -146,12 +146,16 @@ def signup():
     return render_template('register.html')
 
 @app.route('/comment')
-@login_required
 def comment():
-    User.comment_with_id(current_user.id)
-    return render_template('projects.html')
-
-
+    if session.get("logged_in"):
+        # Get the current user's email from the session
+        email = session.get("current_user")
+        user = User.get_user_by_email(email)
+        if user:
+            User.comment_with_id(user.id)
+        return render_template('projects.html')
+    else:
+        return redirect(url_for('login'))
 
 @app.route('/form', methods=['GET', 'POST'])
 
