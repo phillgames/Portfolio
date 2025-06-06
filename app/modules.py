@@ -62,11 +62,14 @@ class User(UserMixin):
     @staticmethod
     def comment_with_id(com_id):
         conn = get_connection()
-        cur = conn.cursor() 
-        cur.execute("SELECT * FROM users WHERE id = %s", (com_id))
-        users = cur.fetchone()
-        cur.execute("INSERT INTO coms (userid) VALUES" (users), (com_id))
-        conn.commit()
+        cur = conn.cursor()
+        # Fetch the user by id
+        cur.execute("SELECT * FROM users WHERE id = %s", (com_id,))
+        user = cur.fetchone()
+        if user:
+            # Insert the user id into coms table
+            cur.execute("INSERT INTO coms (userid) VALUES (%s)", (com_id,))
+            conn.commit()
         conn.close()
 
     
