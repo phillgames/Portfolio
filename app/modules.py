@@ -70,6 +70,7 @@ class User(UserMixin):
             # Insert the user id into coms table
             cur.execute("INSERT INTO coms (userid) VALUES (%s)", (user_id,))
             conn.commit()
+            print(user_id)
         conn.close()
 
     
