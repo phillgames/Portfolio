@@ -145,9 +145,10 @@ def signup():
 
     return render_template('register.html')
 
-@app.route('/comment/<com_id>')
-def comment(com_id):
-    User.comment_with_id(com_id)
+@app.route('/comment')
+@login_required
+def comment():
+    User.comment_with_id(current_user.id)
     return render_template('projects.html')
 
 
