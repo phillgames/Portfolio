@@ -1,4 +1,3 @@
-
 from flask import Flask, request, render_template, redirect, url_for, flash, jsonify, session #type: ignore
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user #type: ignore
 from flask_mail import Mail, Message #type: ignore
@@ -146,10 +145,10 @@ def signup():
 
     return render_template('register.html')
 
-@app.route('/comment')
+@app.route('/comment/<com_id>')
 def comment(com_id):
     if 10 > 5:
-        User.comment_with_id(com_id='something')
+        User.comment_with_id(com_id)
     else:
         return render_template('projects.html')
 
